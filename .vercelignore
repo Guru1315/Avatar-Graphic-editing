@@ -1,0 +1,15 @@
+# Full-resolution originals (4K frames, up to 47MB gallery PNGs). The site loads the
+# screen-sized copies in public/optimized/ instead (made by `npm run optimize-images`),
+# so these would only add ~450MB to every upload.
+/public/New folder
+/public/New folder (2)
+/public/New folder (3)
+/public/New folder (4)
+/public/New folder (5)
+/public/gallery section
+# Not referenced by the site.
+/public/main hero
+
+# Local tooling
+/.claude
+/.vscode

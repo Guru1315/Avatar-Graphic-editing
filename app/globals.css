@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: #020d18;
+  color: #ffffff;
+  font-family: Georgia, 'Times New Roman', serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: #020d18;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 229, 255, 0.35);
+  border-radius: 2px;
+}
+
+@keyframes bio-float {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translateY(-18px) scale(1.3);
+    opacity: 0.75;
+  }
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.5; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+@keyframes marquee-ltr {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes marquee-rtl {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes lb-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes lb-bg-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Hero initial states — GSAP animates these in */
+.hero-header { opacity: 0; }
+.s-tile      { opacity: 0; }
+
+.particle {
+  animation: bio-float ease-in-out infinite;
+}
+
+.scroll-line {
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+/* ── Gallery marquee ── */
+.marquee-row {
+  overflow-x: clip;
+  overflow-y: visible;
+  padding: 0.5rem 0;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.marquee-track-ltr { animation-name: marquee-ltr; }
+.marquee-track-rtl { animation-name: marquee-rtl; }
+
+.marquee-row:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* ── Image cards ── */
+.img-card {
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.img-card img {
+  transition: transform 0.42s ease;
+}
+
+.img-card:hover img {
+  transform: scale(1.07);
+}
+
+.img-card-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.9rem;
+  pointer-events: none;
+}
+
+.img-card:hover .img-card-overlay {
+  opacity: 1;
+}
+
+/* ── Lightbox ── */
+.lb-backdrop {
+  animation: lb-bg-in 0.25s ease forwards;
+}
+
+.lb-img-wrap {
+  animation: lb-in 0.3s cubic-bezier(0.22,1,0.36,1) forwards;
+}
+
+/* ── Lenis smooth scroll (from lenis/dist/lenis.css, minus its
+   "iframe { pointer-events: none }" rule, which would make the
+   trailer player unclickable) ── */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* ── Menu / toast / focus ── */
+.menu-link {
+  color: rgba(255, 255, 255, 0.78);
+  transition: color 0.2s, transform 0.25s;
+}
+
+.menu-link:hover,
+.menu-link:focus-visible {
+  color: #fff;
+  transform: translateX(6px);
+}
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, 10px); }
+  to   { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.toast {
+  animation: toast-in 0.25s ease forwards;
+}
+
+button:focus-visible,
+a:focus-visible,
+.img-card:focus-visible {
+  outline: 2px solid rgba(0, 229, 180, 0.8);
+  outline-offset: 2px;
+}

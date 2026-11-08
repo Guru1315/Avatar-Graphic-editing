@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="t d">
+  <title id="t">AVATAR — Graphic Editing</title>
+  <desc id="d">Animated 3D banner: an extruded, tilting AVATAR title with an orbiting ring, a moving perspective grid and floating bioluminescent particles.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#010a10"/>
+      <stop offset="0.55" stop-color="#021a1c"/>
+      <stop offset="1" stop-color="#010c08"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#00e5b4" stop-opacity="0.28"/>
+      <stop offset="0.45" stop-color="#0090ff" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.6" stop-color="#d9fff6"/>
+      <stop offset="1" stop-color="#7ff5dc"/>
+    </linearGradient>
+    <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#00e5b4" stop-opacity="0"/>
+      <stop offset="1" stop-color="#00e5b4" stop-opacity="0.55"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="2.2"/></filter>
+    <clipPath id="floorClip"><rect x="0" y="300" width="1200" height="120"/></clipPath>
+    <style>
+      .tilt { transform-box: view-box; transform-origin: 600px 205px; animation: tilt 7s ease-in-out infinite; }
+      @keyframes tilt {
+        0%, 100% { transform: scaleX(1) skewY(0deg); }
+        25%      { transform: scaleX(0.86) skewY(-3.5deg); }
+        50%      { transform: scaleX(1) skewY(0deg); }
+        75%      { transform: scaleX(0.86) skewY(3.5deg); }
+      }
+      .extrude { animation: extrude 7s ease-in-out infinite; }
+      @keyframes extrude {
+        0%, 50%, 100% { transform: translate(0, 0); }
+        25%           { transform: translate(5px, 2px); }
+        75%           { transform: translate(-5px, 2px); }
+      }
+      .hline { animation: floor 3.2s linear infinite; opacity: 0; }
+      @keyframes floor {
+        0%   { transform: translateY(0) ; opacity: 0; }
+        15%  { opacity: 0.7; }
+        100% { transform: translateY(120px); opacity: 0.9; }
+      }
+      .p { animation: rise 9s ease-in-out infinite; opacity: 0; }
+      @keyframes rise {
+        0%   { transform: translateY(0); opacity: 0; }
+        20%  { opacity: 0.9; }
+        80%  { opacity: 0.6; }
+        100% { transform: translateY(-260px); opacity: 0; }
+      }
+      .pulse { animation: pulse 3.5s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      @keyframes pulse { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+      .sub { font-family: 'Courier New', monospace; letter-spacing: 9px; }
+    </style>
+  </defs>
+
+  <!-- sky -->
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <rect width="1200" height="420" fill="url(#halo)"/>
+
+  <!-- perspective floor -->
+  <g clip-path="url(#floorClip)" stroke="#00e5b4" stroke-width="1">
+    <g opacity="0.35">
+      <line x1="600" y1="300" x2="-600" y2="420"/><line x1="600" y1="300" x2="-200" y2="420"/>
+      <line x1="600" y1="300" x2="150" y2="420"/><line x1="600" y1="300" x2="420" y2="420"/>
+      <line x1="600" y1="300" x2="600" y2="420"/><line x1="600" y1="300" x2="780" y2="420"/>
+      <line x1="600" y1="300" x2="1050" y2="420"/><line x1="600" y1="300" x2="1400" y2="420"/>
+      <line x1="600" y1="300" x2="1800" y2="420"/>
+    </g>
+    <line class="hline" x1="0" y1="300" x2="1200" y2="300" style="animation-delay:0s"/>
+    <line class="hline" x1="0" y1="300" x2="1200" y2="300" style="animation-delay:0.8s"/>
+    <line class="hline" x1="0" y1="300" x2="1200" y2="300" style="animation-delay:1.6s"/>
+    <line class="hline" x1="0" y1="300" x2="1200" y2="300" style="animation-delay:2.4s"/>
+  </g>
+  <rect x="0" y="298" width="1200" height="122" fill="url(#floorFade)" opacity="0.18"/>
+
+  <!-- orbit ring: back half (behind the title) -->
+  <ellipse cx="600" cy="205" rx="330" ry="58" fill="none" stroke="#00e5b4" stroke-opacity="0.22" stroke-width="1.5" stroke-dasharray="4 7"/>
+
+  <!-- floating bioluminescent particles -->
+  <g fill="#7ff5dc" filter="url(#soft)">
+    <circle class="p" cx="110" cy="390" r="3"   style="animation-delay:0s"/>
+    <circle class="p" cx="230" cy="400" r="2"   style="animation-delay:1.4s"/>
+    <circle class="p" cx="330" cy="395" r="2.6" style="animation-delay:3.1s"/>
+    <circle class="p" cx="455" cy="405" r="1.8" style="animation-delay:5.2s"/>
+    <circle class="p" cx="520" cy="392" r="2.4" style="animation-delay:2.2s"/>
+    <circle class="p" cx="690" cy="398" r="2"   style="animation-delay:4.4s"/>
+    <circle class="p" cx="760" cy="402" r="3"   style="animation-delay:0.7s"/>
+    <circle class="p" cx="880" cy="390" r="2.2" style="animation-delay:6.1s"/>
+    <circle class="p" cx="990" cy="400" r="2.8" style="animation-delay:3.7s"/>
+    <circle class="p" cx="1090" cy="396" r="2"  style="animation-delay:1.9s"/>
+  </g>
+  <g fill="#6ab8ff" filter="url(#soft)">
+    <circle class="p" cx="170" cy="410" r="1.6" style="animation-delay:2.6s"/>
+    <circle class="p" cx="400" cy="408" r="1.4" style="animation-delay:7.0s"/>
+    <circle class="p" cx="640" cy="410" r="1.8" style="animation-delay:5.8s"/>
+    <circle class="p" cx="930" cy="410" r="1.5" style="animation-delay:4.9s"/>
+    <circle class="p" cx="1140" cy="408" r="1.7" style="animation-delay:8.0s"/>
+  </g>
+
+  <!-- 3D title: extruded layers + lit front face, tilting as if turning in space -->
+  <g class="tilt">
+    <ellipse cx="600" cy="205" rx="300" ry="90" fill="url(#halo)" class="pulse"/>
+    <g class="extrude" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="132" letter-spacing="22" text-anchor="middle">
+      <text x="610" y="252" fill="#002a24">AVATAR</text>
+      <text x="608" y="250" fill="#003b33">AVATAR</text>
+      <text x="606" y="248" fill="#014d43">AVATAR</text>
+      <text x="604" y="246" fill="#036255">AVATAR</text>
+      <text x="602" y="244" fill="#077a69">AVATAR</text>
+    </g>
+    <text x="600" y="242" font-family="Georgia, 'Times New Roman', serif" font-weight="900" font-size="132" letter-spacing="22" text-anchor="middle" fill="url(#face)" filter="url(#glow)">AVATAR</text>
+  </g>
+
+  <!-- orbit ring: front half + moving satellites (SMIL so it animates on GitHub) -->
+  <path d="M 270 205 A 330 58 0 0 0 930 205" fill="none" stroke="#00e5b4" stroke-opacity="0.5" stroke-width="2"/>
+  <circle r="6" fill="#00e5b4" filter="url(#glow)">
+    <animateMotion dur="6s" repeatCount="indefinite" path="M 930 205 A 330 58 0 1 1 270 205 A 330 58 0 1 1 930 205"/>
+    <animate attributeName="r" dur="6s" repeatCount="indefinite" values="6;3;6;9;6" keyTimes="0;0.25;0.5;0.75;1"/>
+    <animate attributeName="opacity" dur="6s" repeatCount="indefinite" values="0.9;0.35;0.9;1;0.9" keyTimes="0;0.25;0.5;0.75;1"/>
+  </circle>
+  <circle r="4" fill="#6ab8ff" filter="url(#glow)">
+    <animateMotion dur="6s" begin="-3s" repeatCount="indefinite" path="M 930 205 A 330 58 0 1 1 270 205 A 330 58 0 1 1 930 205"/>
+    <animate attributeName="r" dur="6s" begin="-3s" repeatCount="indefinite" values="4;2;4;6;4" keyTimes="0;0.25;0.5;0.75;1"/>
+  </circle>
+
+  <!-- subtitle -->
+  <text class="sub" x="600" y="92" text-anchor="middle" font-size="15" fill="#00e5b4" fill-opacity="0.85">JAMES CAMERON'S UNIVERSE · FAN BUILD</text>
+  <text class="sub" x="600" y="345" text-anchor="middle" font-size="17" fill="#ffffff" fill-opacity="0.82">GRAPHIC EDITING · SCROLL-DRIVEN 3D</text>
+  <g class="pulse">
+    <rect x="512" y="364" width="176" height="34" rx="17" fill="#00e5b4" fill-opacity="0.14" stroke="#00e5b4" stroke-opacity="0.7"/>
+    <circle cx="536" cy="381" r="5" fill="#00ff9c"/>
+    <text x="608" y="386" text-anchor="middle" font-family="'Courier New', monospace" font-size="14" font-weight="700" letter-spacing="3" fill="#ffffff">LIVE DEMO</text>
+  </g>
+</svg>
