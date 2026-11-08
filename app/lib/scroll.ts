@@ -1,5 +1,4 @@
-// Single place that owns smooth scrolling, so every button scrolls the same way
-// (through Lenis) instead of fighting it with window.scrollTo.
+
 import type Lenis from 'lenis';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
