@@ -1,15 +1,3 @@
-// Keeps a sliding window of GPU-ready, screen-sized ImageBitmaps around the current
-// frame of a scroll/mouse-driven image sequence.
-//
-// Why: drawing a freshly loaded <img> onto a canvas costs ~60ms on an integrated GPU
-// (decode at draw time, on the main thread), which is what made scrolling stutter.
-// An ImageBitmap is already decoded and draws in a few ms. Bitmaps are decoded off
-// the main thread from the compressed blobs, and only a window around the current
-// frame is kept, so memory stays bounded (all frames decoded would be several GB).
-//
-// Bitmaps are deliberately NOT resized: createImageBitmap's resize option runs on the
-// main thread in Chrome (~130ms per frame, measured), which reintroduced the stutter.
-// The GPU scales them at draw time for free.
 
 export interface FrameSequenceOptions {
   count: number;
