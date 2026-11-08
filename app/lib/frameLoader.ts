@@ -1,8 +1,3 @@
-// Shared, prioritized downloader for the scroll-frame sequences.
-// Before: ~840 frame requests fired at once, so the section you were scrolling into
-// competed with every other section. Now: a small pool downloads frames by priority
-// (hero first, then chapters in page order), and a chapter jumps the queue as you
-// approach it. Frames are kept as compressed blobs; FrameSequence decodes them.
 
 type Job = {
   url: string;
