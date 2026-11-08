@@ -1,5 +1,3 @@
-// Tiny event bus so any component can open the shared menu, trailer player or toast
-// rendered by <Overlays /> without prop-drilling.
 
 export const TRAILERS = [
   { id: 'a1', num: '01', title: 'Avatar', year: '2009', youtubeId: '5PSNL1qE6VY' },
