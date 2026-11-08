@@ -21,15 +21,12 @@ const EXPLORE_LINKS: { label: string; target: ScrollTarget }[] = [
   { label: 'Characters', target: 'chapter-2' },
 ];
 
-// These pages don't exist yet — say so instead of silently jumping to the top.
 const comingSoon = (label: string) => () => showToast(`${label} — coming soon`);
 
 const linkButton: React.CSSProperties = {
   background: 'none', border: 'none', padding: 0, cursor: 'pointer', textAlign: 'left',
 };
 
-// ssr:false avoids hydration mismatch caused by GSAP pin-spacers
-// mutating the shared <main> DOM tree outside React's awareness
 const GallerySection = dynamic(
   () => import('./components/GallerySection'),
   { ssr: false, loading: () => <div style={{ height: '10vh', background: '#020d18' }} /> }
