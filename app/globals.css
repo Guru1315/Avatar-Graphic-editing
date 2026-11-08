@@ -64,7 +64,6 @@ body {
   to   { opacity: 1; }
 }
 
-/* Hero initial states — GSAP animates these in */
 .hero-header { opacity: 0; }
 .s-tile      { opacity: 0; }
 
@@ -76,7 +75,6 @@ body {
   animation: scroll-pulse 2s ease-in-out infinite;
 }
 
-/* ── Gallery marquee ── */
 .marquee-row {
   overflow-x: clip;
   overflow-y: visible;
