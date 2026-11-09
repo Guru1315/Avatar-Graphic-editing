@@ -158,6 +158,5 @@ docs/                      prompts, screenshots, README media
 
 ## 🙏 Credits
 
-- Based on [alagappan567/avatar](https://github.com/alagappan567/avatar).
-- **Unofficial fan project.** *Avatar* and all film imagery and trailers are the property of
+- *Avatar* and all film imagery and trailers are the property of
   20th Century Studios / Lightstorm Entertainment. This repository is not affiliated with or endorsed by them.
