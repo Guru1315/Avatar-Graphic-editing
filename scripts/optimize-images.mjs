@@ -1,9 +1,3 @@
-// Generates screen-sized copies of the site's heavy images into public/optimized/.
-// Originals in public/ are never modified. Re-run after adding or replacing images:
-//   npm run optimize-images
-//
-// - Chapter scroll frames (4K JPEGs) -> 1920px JPEGs: ~4x fewer pixels to decode per scroll tick.
-// - Gallery images (up to 7K / 47MB PNGs) -> 960px WebP thumbnails + 2560px WebP for the lightbox.
 
 import { readdir, mkdir, stat } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
