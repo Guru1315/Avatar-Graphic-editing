@@ -1,6 +1,3 @@
-// Builds the animated GIFs used in README.md from the site's own frame sequences.
-//   node scripts/make-readme-media.mjs
-// Output: docs/media/hero-turn.gif, docs/media/chapter-scroll.gif
 
 import { mkdir, readdir, stat } from 'node:fs/promises';
 import path from 'node:path';
